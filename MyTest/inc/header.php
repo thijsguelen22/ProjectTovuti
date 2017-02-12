@@ -48,7 +48,7 @@
 <?php
 session_start();
 echo '<div id="top"><ul class="menu-list"><li class="menu-item"><a href="./index.php">Home</a></li>';
-if($_SESSION['level'] >= 1) {
+if($_SESSION['level'] == 1 || $_SESSION['level'] == 2) {
 	echo '<li class="menu-item"><a href="./toetsen.php">Toetsen</a></li><li style="float:right" class="menu-item"><a href="./account.php">Account</a></li>';
 }
 echo '<li class="menu-item"><a href="./contact.php">Contact</a></li></ul>';

@@ -36,6 +36,11 @@ echo '<div id="login">';
     } else {
         echo "yo g de toets is klaar. oprotten";
         echo "oh ja, je hebt zoveel vragen goed: ".$_SESSION['ToetsResultaten']['goed'];
+        var_dump($_SESSION);
+        $punt = (($_SESSION['ToetsResultaten']['goed'] / ($_SESSION['ToetsResultaten']['goed'] + $_SESSION['ToetsResultaten']['fout'])) * 10);
+        echo $punt;
+        InsertTestResult($pdo, $punt, $_SESSION['GemaakteToetsID'], $_SESSION['UserId']);
+        $_SESSION['GemaakteToetsID'] = $_SESSION['ToetsArr'] = $_SESSION['JuisteAntwoord'] = $_SESSION['VraagNummer'] = $_SESSION['ToetsResultaten'] = null;
     }
         //echo "<tr><td>".$ToetsArr[$i]['antwoorden'][$j][1]."</td><td>".$ToetsArr[$i]['antwoorden'][($j + 1)][1]."</td></tr>";
         //$j++;

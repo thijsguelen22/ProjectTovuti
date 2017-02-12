@@ -6,17 +6,20 @@ require(__DIR__ . "/inc/header.php");
 require(__DIR__ . "/inc/functions.php");
 require(__DIR__ . "/inc/connector.php");
 if(IsLoggedInCheck($_SESSION)) {
-    echo '<div id="login"><h2><b>BIEM!</b></h2>';
+    echo '<div id="login"><h2><b>U bent al ingelogd. Kijk bij toetsen voor openstaande toetsen.</b></h2>';
+    //var_dump($_SESSION);
 } else {
     if($_POST["submit"]) {
         $LoginRet = (LoginCheck($_POST['email'], $_POST['password'], $pdo));
-        var_dump($LoginRet);
+        echo '<div id="login"><h2>succesvol ingelogd</h2><br />';
         if($LoginRet['LoggedIn'] = true) {
-            $_SESSION['LoggedIn'] = true;
+            $_SESSION['LoggedIn'] = $LoginRet['LoggedIn'];
             $_SESSION['level'] = $LoginRet['level'];
-            header("Location: ".$_SERVER['HTTP_HOST']);
+            $_SESSION['UserId'] = $LoginRet['UserID'];
+            $_SESSION['Docent'] = $LoginRet['Docent'];
+            //header("Location: ".$_SERVER['HTTP_HOST']);
         }
-        var_dump($_POST);
+        var_dump($_SESSION);
 
         echo '</div>';
     } else {
