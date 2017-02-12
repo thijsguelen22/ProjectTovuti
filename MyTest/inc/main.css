@@ -1,0 +1,16 @@
+﻿html {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	background-image: url("../img/wp.jpg");
+    background-size: cover;
+}
+#login {
+    margin-top: 5% !important;
+    margin: auto;
+    width: 25%;
+    padding: 30px;
+    background-color: hsla(0, 0%, 100%, 0.6);
+    border-radius: 10px;
+}
+.ToetsVraag {
+    font-size: 18px;
+}

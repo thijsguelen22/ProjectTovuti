@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>MyTest</Name>
+    <ProjectGuid>1f3a1273-789f-4b9a-bae2-7f2e833d344f</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>MyTest</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="inc\breadcrumbs.php" />
+    <Compile Include="inc\connector.php" />
+    <Compile Include="inc\functions.php" />
+    <Compile Include="inc\header.php" />
+    <Compile Include="inc\VraagWindow.php" />
+    <Compile Include="index.php" />
+    <Compile Include="logout.php" />
+    <Compile Include="test\AnotherTest\index.php" />
+    <Compile Include="toetsen.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="inc\" />
+    <Folder Include="test\" />
+    <Folder Include="test\AnotherTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="inc\main.css" />
+  </ItemGroup>
+</Project>
