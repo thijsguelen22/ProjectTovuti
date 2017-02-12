@@ -24,7 +24,7 @@ echo '<div id="login">';
     } else {
         $_SESSION['VraagNummer'] = 0;
     }
-    if($_SESSION['VraagNummer'] != $_SESSION['AantalVragen']) {
+    if($_SESSION['VraagNummer'] != $_SESSION['AantalVragen'] + 1) {
         echo '<form method="POST">';
         for($j=0;$j<4;$j++) {
             if($ToetsArr[$i]['antwoorden'][$j][2] == 1) {
@@ -34,11 +34,10 @@ echo '<div id="login">';
             //echo '<tr><td><input type="radio" value="'.$j.'" />'.$ToetsArr[$i]['antwoorden'][$j][1].'</td><td><input type="radio" value="'.($j + 1).'" />'.$ToetsArr[$i]['antwoorden'][($j + 1)][1]."</td></tr>";
         }
     } else {
-        echo "yo g de toets is klaar. oprotten";
-        echo "oh ja, je hebt zoveel vragen goed: ".$_SESSION['ToetsResultaten']['goed'];
-        var_dump($_SESSION);
+        echo "De toets is afgerond.<br />";
         $punt = (($_SESSION['ToetsResultaten']['goed'] / ($_SESSION['ToetsResultaten']['goed'] + $_SESSION['ToetsResultaten']['fout'])) * 10);
         echo $punt;
+        echo "resultaat: ".$punt;
         InsertTestResult($pdo, $punt, $_SESSION['GemaakteToetsID'], $_SESSION['UserId']);
         $_SESSION['GemaakteToetsID'] = $_SESSION['ToetsArr'] = $_SESSION['JuisteAntwoord'] = $_SESSION['VraagNummer'] = $_SESSION['ToetsResultaten'] = null;
     }

@@ -172,7 +172,7 @@ _SQL;
             $sth = $pdo->prepare($sql);
             $sth->execute(array( // PHP 5.4 short array syntax, use array(...) if not available
     ':ToetsId'        => trim($ToetsId),
-    ':LeerlingId'    => trim($UserId),
+    ':UserId'    => trim($UserId),
     ':Result'          => trim($result),
     ':IsGemaakt'    => trim(1)
 ));

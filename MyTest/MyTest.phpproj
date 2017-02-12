@@ -23,6 +23,7 @@
     <Compile Include="inc\header.php" />
     <Compile Include="inc\VraagWindow.php" />
     <Compile Include="index.php" />
+    <Compile Include="klas.php" />
     <Compile Include="logout.php" />
     <Compile Include="test\AnotherTest\index.php" />
     <Compile Include="toetsen.php" />
