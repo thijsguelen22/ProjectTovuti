@@ -1,4 +1,3 @@
-
 <style>
     #breadcrumbs {
         background-color: hsla(0, 0%, 100%, 0.6);
@@ -39,8 +38,6 @@
             padding: 14px 16px;
             text-decoration: none;
         }
-
-            /* Change the link color to #111 (black) on hover */
             li a:hover {
                 background-color: #FF6A00;
             }
@@ -48,31 +45,30 @@
 <?php
 session_start();
 echo '<div id="top"><ul class="menu-list"><li class="menu-item"><a href="./index.php">Home</a></li>';
-if($_SESSION['level'] == 1 || $_SESSION['level'] == 2) {
+if($_SESSION['level'] == 1 || $_SESSION['level'] == 2 || $_SESSION['level'] == 3) {
 	echo '<li class="menu-item"><a href="./toetsen.php">Toetsen</a></li><li style="float:right" class="menu-item"><a href="./account.php">Account</a></li>';
 }
-echo '<li class="menu-item"><a href="./contact.php">Contact</a></li></ul>';
+echo '<li class="menu-item"><a href="./contact.php">Contact</a></li>';
+echo '<li class="menu-item"><a href="./logout.php">Uitloggen</a></li></ul>';
 $path = substr($_SERVER['PHP_SELF'], 1);
 
 $BCArr = explode("/",substr($path, 0, strpos($path, ".")));
 $BCArrC = count($BCArr);
 $BCLink = array();
-echo '<div id="breadcrumbs"><a href="http://'.$_SERVER['HTTP_HOST'].'" class="BreadCrumbPage">Home</a> > ';
+echo '<div id="breadcrumbs"><a href="http://'.$_SERVER['HTTP_HOST'].'" class="BreadCrumbPage">Home</a>';
+if($BCArrC > 0) {
+    echo " > ";
+}
 for($i=0;$i<$BCArrC-1;$i++) {
     if($i != ($BCArrC - 2)) {
         for($j=0;$j<$i+1;$j++) {
-            //$BCLink = $BCLink.$BCArr[$j];
             $BCLink[$j] = $BCLink[$i].$BCArr[$j];
         }
         echo '<a href="./'.$BCLink[$i].'" class="BreadCrumbPage">'.$BCArr[$i]."</a> > ";
     } else {
         echo '<span class="BreadCrumbPage BCEnd">'.$BCArr[$i]."</span>";
     }
-
 }
 echo '</div</div>';
-//$actual_path = substr($path, 0, strpos($path, "."));
 echo '<br /><br /><br />';
-
-
 ?>

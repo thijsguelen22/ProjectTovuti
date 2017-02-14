@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" href="./inc/main.css">
-
 <?php
 session_start();
 require(__DIR__ . "/inc/header.php");
@@ -7,20 +6,19 @@ require(__DIR__ . "/inc/functions.php");
 require(__DIR__ . "/inc/connector.php");
 if(IsLoggedInCheck($_SESSION)) {
     echo '<div id="login"><h2><b>U bent al ingelogd. Kijk bij toetsen voor openstaande toetsen.</b></h2>';
-    //var_dump($_SESSION);
 } else {
     if($_POST["submit"]) {
-        $LoginRet = (LoginCheck($_POST['email'], $_POST['password'], $pdo));
-        echo '<div id="login"><h2>succesvol ingelogd</h2><br />';
-        if($LoginRet['LoggedIn'] = true) {
+        $passwd = hash('sha512', $_POST['password']);
+        $LoginRet = (LoginCheck($_POST['email'], $passwd, $pdo));
+        if($LoginRet['LoggedIn'] == true) {
+            echo '<div id="login"><h2>succesvol ingelogd</h2><br />';
             $_SESSION['LoggedIn'] = $LoginRet['LoggedIn'];
             $_SESSION['level'] = $LoginRet['level'];
             $_SESSION['UserId'] = $LoginRet['UserID'];
             $_SESSION['Docent'] = $LoginRet['Docent'];
-            //header("Location: ".$_SERVER['HTTP_HOST']);
+        } else {
+            echo '<div id="login"><h2>Er was een fout. probeer het opnieuw.</h2><br />';
         }
-        var_dump($_SESSION);
-
         echo '</div>';
     } else {
 ?>
@@ -37,5 +35,4 @@ if(IsLoggedInCheck($_SESSION)) {
 <?php
     }
 }
-
 ?>

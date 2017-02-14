@@ -17,8 +17,8 @@
 <?php
 session_start();
 require(__DIR__ . "../../../inc/header.php");
-require(__DIR__ . "../../inc/functions.php");
-require(__DIR__ . "../../inc/connector.php");
+
+    
 if(IsLoggedInCheck($_SESSION)) {
     echo '<div id="login"><h2><b>BIEM!</b></h2>';
 } else {

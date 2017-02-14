@@ -31,19 +31,14 @@ echo '<div id="login">';
                 $_SESSION['JuisteAntwoord'] = $j;
             }
             echo '<input type="radio" name="answer" value="'.$j.'" /><span class="ToetsVraag">'.$ToetsArr[$i]['antwoorden'][$j][1]."</span><br />";
-            //echo '<tr><td><input type="radio" value="'.$j.'" />'.$ToetsArr[$i]['antwoorden'][$j][1].'</td><td><input type="radio" value="'.($j + 1).'" />'.$ToetsArr[$i]['antwoorden'][($j + 1)][1]."</td></tr>";
         }
     } else {
         echo "De toets is afgerond.<br />";
         $punt = (($_SESSION['ToetsResultaten']['goed'] / ($_SESSION['ToetsResultaten']['goed'] + $_SESSION['ToetsResultaten']['fout'])) * 10);
-        echo $punt;
         echo "resultaat: ".$punt;
         InsertTestResult($pdo, $punt, $_SESSION['GemaakteToetsID'], $_SESSION['UserId']);
         $_SESSION['GemaakteToetsID'] = $_SESSION['ToetsArr'] = $_SESSION['JuisteAntwoord'] = $_SESSION['VraagNummer'] = $_SESSION['ToetsResultaten'] = null;
     }
-        //echo "<tr><td>".$ToetsArr[$i]['antwoorden'][$j][1]."</td><td>".$ToetsArr[$i]['antwoorden'][($j + 1)][1]."</td></tr>";
-        //$j++;
         echo '<input type="submit" value="next" name="next" /></form>';
         echo '</div>';
-
 ?>
